@@ -4,19 +4,19 @@
 ###Project Objective
 Clean text errors and transform directory entries into a dataframe.
 
- - Identify blocks of directory entries from the rest of the directory.
+ - Isolate blocks of directory entries from the rest of the directory.
  - Correct "obvious" incorrect character translations resulting from the    OCR process. 
- - Make the approach reusable for other directories
+ - Make the approach reusable for other editions of the directory to the extent possible
 
 There is a high likelihood that the cleaning and parsing will not handle all corrections required. It may be that the text cleaning and parsing will need a subsequent review, possibly using crowd-sourcing to provide sufficient accuracy for research purposes.
 
 ###Data Source
 Image: https://archive.org/stream/doggettsnewyorkc1848dogg/#page/n3/mode/2up
+
 Text: https://archive.org/stream/doggettsnewyorkc1848dogg/doggettsnewyorkc1848dogg_djvu.txt
 
 Directory Text Structure:
-Original is in two column format. Each directory column has a header that consists of three all cap letter column header that corresponds to last entry of the column
-If a page starts with directory entries, then the page number appears between the two three-letter column headers.
+Original is in two column format. Each directory column has a header that consists of three all cap letter column header that corresponds to last entry of the column. If a page starts with directory entries, then the page number appears between the two three-letter column headers.
 
 Standard form of a single entry is Last_Name [space] First_Name [comma] Occupation [comma] Address
 
@@ -55,7 +55,6 @@ However some business entries are not all-caps.
     Adams & Lienau, brokers, 87 Wall
 
 
-
 Entries frequently use abbreviations and contractions in names, occupations, and addresses.
 
 Some entries are followed by advertising copy.
@@ -87,9 +86,9 @@ W frequently rendered as VV
      + If token contains non letter character(s): Remove non-letter characters (function)
      + If all-letter token matches previous line: do nothing
 - Categorize each entry as: Person or Business
--- Parse each entry into fields:
+-- Parse each entry into dataframe fields:
      + Person fields: Last_Name, First_Name, Other_Name, Occupation, [Business_Address], Home_Address
-     + Business fields: Business_Name, Occupation, Business_Address fields
+     + Business fields: Business_Name, Occupation, Business_Address 
 
 Also, need to create a lookup table of abbreviations: 
 
